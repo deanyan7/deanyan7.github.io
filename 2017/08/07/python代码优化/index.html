@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习,python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="冷颜の‘s blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="变量交换 12345# 大部分编程语言交换两个值需要引入临时变量进行书写a, b = 1, 2# pythonic 写法a, b = b, aprint a, b 2 1 循环遍历区间元素 12345678910li = [i for i in range(10)]for i in li:    print i# 或者for i in range(len(li)):    print li[i]">
+<meta name="keywords" content="机器学习,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python代码优化">
+<meta property="og:url" content="http://yoursite.com/2017/08/07/python代码优化/index.html">
+<meta property="og:site_name" content="冷颜の‘s blog">
+<meta property="og:description" content="变量交换 12345# 大部分编程语言交换两个值需要引入临时变量进行书写a, b = 1, 2# pythonic 写法a, b = b, aprint a, b 2 1 循环遍历区间元素 12345678910li = [i for i in range(10)]for i in li:    print i# 或者for i in range(len(li)):    print li[i]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-08T07:57:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python代码优化">
+<meta name="twitter:description" content="变量交换 12345# 大部分编程语言交换两个值需要引入临时变量进行书写a, b = 1, 2# pythonic 写法a, b = b, aprint a, b 2 1 循环遍历区间元素 12345678910li = [i for i in range(10)]for i in li:    print i# 或者for i in range(len(li)):    print li[i]">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/07/python代码优化/"/>
+
+
+
+
+
+  <title>python代码优化 | 冷颜の‘s blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冷颜の‘s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">There is no substitute to hard work, first in, first out</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/python代码优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冷颜の">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/1767523-e8ada6f529a7b7a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冷颜の‘s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python代码优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T09:44:24+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,074 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="变量交换"><a href="#变量交换" class="headerlink" title="变量交换"></a>变量交换</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 大部分编程语言交换两个值需要引入临时变量进行书写</span></div><div class="line">a, b = <span class="number">1</span>, <span class="number">2</span></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line">a, b = b, a</div><div class="line"><span class="keyword">print</span> a, b</div></pre></td></tr></table></figure>
+<pre><code>2 1
+</code></pre><h4 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">li = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> li:</div><div class="line">    <span class="keyword">print</span> i</div><div class="line"><span class="comment"># 或者</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(li)):</div><div class="line">    <span class="keyword">print</span> li[i]</div><div class="line">    </div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">6</span>):</div><div class="line">    <span class="keyword">print</span> i</div></pre></td></tr></table></figure>
+<p>在python2中，xrang返回的是生成器对象， range返回的是列表对象，生成器对象比列表更节约内存，python3中只有range方法，直接返回生成器对象<br><a id="more"></a></p>
+<h4 id="带有索引位置的接遍历"><a href="#带有索引位置的接遍历" class="headerlink" title="带有索引位置的接遍历"></a>带有索引位置的接遍历</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">colors = [<span class="string">'red'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'blue'</span>, <span class="string">'grey'</span>]</div><div class="line"><span class="comment"># 遍历集合时如果需要使用到集合的索引位置时，直接对集合迭代是没有索引信息的</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(colors)):</div><div class="line">    <span class="keyword">print</span> index, <span class="string">'-&gt;'</span>, colors[index]</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">for</span> index, color <span class="keyword">in</span> enumerate(colors):</div><div class="line">    <span class="keyword">print</span> index, color</div></pre></td></tr></table></figure>
+<pre><code>0 -&gt; red
+1 -&gt; yellow
+2 -&gt; black
+3 -&gt; blue
+4 -&gt; grey
+0 red
+1 yellow
+2 black
+3 blue
+4 grey
+</code></pre><h4 id="字符串连接与拆分"><a href="#字符串连接与拆分" class="headerlink" title="字符串连接与拆分"></a>字符串连接与拆分</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 字符串连接普通方式是可以用 + 操作</span></div><div class="line">words = [<span class="string">'Thank'</span>, <span class="string">'you'</span>, <span class="string">'for'</span>, <span class="string">'your'</span>, <span class="string">'resubmission'</span>]</div><div class="line">s = words[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> word <span class="keyword">in</span> words[<span class="number">1</span>:]:</div><div class="line">    s += <span class="string">' '</span> + word</div><div class="line"><span class="keyword">print</span> s</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">print</span> <span class="string">' '</span>.join(words)</div><div class="line"></div><div class="line"><span class="comment"># 字符串拆分</span></div><div class="line"><span class="keyword">print</span> s.split(<span class="string">' '</span>)</div><div class="line"><span class="comment"># +每使用一次在内存中将生成一个新的字符串对象，造成无谓的内存浪费， join整个过程只会产生一个字符串对象</span></div></pre></td></tr></table></figure>
+<pre><code>Thank you for your resubmission
+Thank you for your resubmission
+[&apos;Thank&apos;, &apos;you&apos;, &apos;for&apos;, &apos;your&apos;, &apos;resubmission&apos;]
+</code></pre><h4 id="打开、关闭文件"><a href="#打开、关闭文件" class="headerlink" title="打开、关闭文件"></a>打开、关闭文件</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 执行文件操作时，最后必须进行文件的close操作，即使有异常，普通的方式是在finnally中显示的调用close方法</span></div><div class="line">f = open(<span class="string">'text.txt'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    data = f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    f.close()</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    data = f.read()</div><div class="line"><span class="comment"># 使用with关键字，系统会在执行完文件操作对象，自动关闭文件对象</span></div></pre></td></tr></table></figure>
+<h4 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 普通生产列表的方式</span></div><div class="line">res = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    res.append(i)</div><div class="line"><span class="keyword">print</span> res</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="comment"># 生成 0-3的列表</span></div><div class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</div><div class="line"><span class="comment"># 生成 0-3 的奇数列表</span></div><div class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>) <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>]</div></pre></td></tr></table></figure>
+<pre><code>[0, 1, 2, 3]
+[0, 1, 2, 3]
+[1, 3]
+</code></pre><h4 id="链式比较操作"><a href="#链式比较操作" class="headerlink" title="链式比较操作"></a>链式比较操作</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">15</span> <span class="keyword">and</span> age &lt; <span class="number">60</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'younger'</span></div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">if</span> <span class="number">15</span> &lt; age &lt; <span class="number">60</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'younger'</span></div><div class="line">    </div><div class="line"><span class="comment"># 链式操作</span></div><div class="line"><span class="keyword">False</span> == <span class="keyword">False</span> == <span class="keyword">True</span></div><div class="line"><span class="comment">#out: False</span></div></pre></td></tr></table></figure>
+<pre><code>younger
+younger
+False
+</code></pre><h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在c语言或者其它语言中有三目运算符‘:’</span></div><div class="line"><span class="comment"># 但是在Python之禅中: “There should be one— and preferably only one —obvious way to do it. ”。能用if else表达清楚逻辑运算，不需要增加另外一种方式</span></div><div class="line">b = <span class="number">1</span></div><div class="line">text = <span class="string">'true'</span> <span class="keyword">if</span> b == <span class="number">1</span> <span class="keyword">else</span> <span class="string">'false'</span></div><div class="line"><span class="keyword">print</span> text</div></pre></td></tr></table></figure>
+<pre><code>true
+</code></pre><h4 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a>else语句</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在python中，除了if外，其它的循环语句都有else语句  </span></div><div class="line"><span class="comment">#pythonic 写法</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">False</span>:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'while'</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>):</div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'for'</span></div></pre></td></tr></table></figure>
+<pre><code>while
+for
+</code></pre><h4 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 字符串格式化拼接方式</span></div><div class="line">str1 = <span class="string">"preferably"</span></div><div class="line">str2 = <span class="string">"obvious way"</span></div><div class="line">str3 = <span class="string">"There should be one— and %s only one —%s to do it. "</span> % (str1, str2)</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line">str4 = <span class="string">"There should be one— and &#123;s1&#125; only one —&#123;s2&#125; to do it. "</span>.format(s1=str1, s2 = str2)</div><div class="line"></div><div class="line"><span class="comment">#很难确定用format比%s代码量更少, 但是往往format方式更易于代码的理解</span></div><div class="line"><span class="keyword">print</span> str3</div><div class="line"><span class="keyword">print</span> str4</div></pre></td></tr></table></figure>
+<pre><code>There should be one— and preferably only one —obvious way to do it. 
+There should be one— and preferably only one —obvious way to do it. 
+</code></pre><h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 生成斐波拉契数列</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></div><div class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> b &lt; n:</div><div class="line">        res.append(b)</div><div class="line">        a, b = b, a+b</div><div class="line">    <span class="keyword">return</span> res</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib2</span><span class="params">(n)</span>:</span></div><div class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> a &lt; n:</div><div class="line">        <span class="keyword">yield</span> a</div><div class="line">        a, b = b, a + b</div><div class="line"></div><div class="line"><span class="comment"># 生成器的好处在于无需一次将所有的数据放入内存中，只有迭代元素时才返回该元素，列表是预先一次性将所有元素加载入内存，</span></div><div class="line"><span class="keyword">print</span> fib(<span class="number">5</span>)[<span class="number">2</span>]</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> fib2(<span class="number">5</span>):</div><div class="line">    <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<pre><code>2
+0
+1
+1
+2
+3
+</code></pre><h4 id="字典元素获取与预设字典值"><a href="#字典元素获取与预设字典值" class="headerlink" title="字典元素获取与预设字典值"></a>字典元素获取与预设字典值</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1&gt; 字典元素的获取 </span></div><div class="line">dic = &#123;<span class="string">'name'</span>: <span class="string">'foo'</span>&#125;</div><div class="line"><span class="keyword">if</span> dic.has_key(<span class="string">'name'</span>):</div><div class="line">    <span class="keyword">print</span> dic[<span class="string">'name'</span>]</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'unknow'</span></div><div class="line"></div><div class="line"><span class="comment"># pythonic</span></div><div class="line"><span class="keyword">print</span> dic.get(<span class="string">'name'</span>, <span class="string">'unknow'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2&gt; 预设字典默认值</span></div><div class="line"><span class="comment"># 通过 key 分组的时候，不得不每次检查 key 是否已经存在于字典中。</span></div><div class="line">data = [(<span class="string">'foo'</span>, <span class="number">10</span>), (<span class="string">'bar'</span>, <span class="number">20</span>), (<span class="string">'foo'</span>, <span class="number">39</span>), (<span class="string">'bar'</span>, <span class="number">49</span>)]</div><div class="line">groups = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    <span class="keyword">if</span> key <span class="keyword">in</span> groups:</div><div class="line">        groups[key].append(value)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        groups[key] = [value]</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="comment"># 第一种方式</span></div><div class="line">groups2 = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    groups2.setdefault(key, []).append(value)</div><div class="line"></div><div class="line"><span class="comment"># 第二种方式</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line">groups3 = defaultdict(list)</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    groups3[key].append(value)  </div><div class="line"></div><div class="line"><span class="keyword">print</span> groups</div><div class="line"><span class="keyword">print</span> groups2</div><div class="line"><span class="keyword">print</span> groups3</div></pre></td></tr></table></figure>
+<pre><code>foo
+foo
+{&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]}
+{&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]}
+defaultdict(&lt;type &apos;list&apos;&gt;, {&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]})
+</code></pre>
+      
+    </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/08/07/python代码优化/">python代码优化</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 冷颜の 的个人博客">冷颜の</a></p>
+  <p><span>发布时间:</span>2017年08月07日 - 09:08</p>
+  <p><span>最后更新:</span>2017年08月08日 - 15:08</p>
+  <p><span>原始链接:</span><a href="/2017/08/07/python代码优化/" title="python代码优化">http://yoursite.com/2017/08/07/python代码优化/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2017/08/07/python代码优化/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/26/descriptionStatistics/" rel="next" title="category/DataAnalysis">
+                <i class="fa fa-chevron-left"></i> category/DataAnalysis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/07/数据分析/" rel="prev" title="数据分析">
+                数据分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTczOC82MzA0"></div>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/1767523-e8ada6f529a7b7a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="冷颜の" />
+          <p class="site-author-name" itemprop="name">冷颜の</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/your-user-name" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/966c5b93e850" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/59505f8a6fb9a06bbd6f55c2" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.baidu.com/" title="百度" target="_blank">百度</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量交换"><span class="nav-number">1.</span> <span class="nav-text">变量交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环遍历区间元素"><span class="nav-number">2.</span> <span class="nav-text">循环遍历区间元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带有索引位置的接遍历"><span class="nav-number">3.</span> <span class="nav-text">带有索引位置的接遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串连接与拆分"><span class="nav-number">4.</span> <span class="nav-text">字符串连接与拆分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开、关闭文件"><span class="nav-number">5.</span> <span class="nav-text">打开、关闭文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导式"><span class="nav-number">6.</span> <span class="nav-text">列表推导式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式比较操作"><span class="nav-number">7.</span> <span class="nav-text">链式比较操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三目运算符"><span class="nav-number">8.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#else语句"><span class="nav-number">9.</span> <span class="nav-text">else语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串格式化"><span class="nav-number">10.</span> <span class="nav-text">字符串格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器"><span class="nav-number">11.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典元素获取与预设字典值"><span class="nav-number">12.</span> <span class="nav-text">字典元素获取与预设字典值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-tint"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冷颜の</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</html>

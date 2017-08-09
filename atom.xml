@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>冷颜の‘s blog</title>
+  <subtitle>There is no substitute to hard work, first in, first out</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-08-08T07:58:42.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>冷颜の</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据分析</title>
+    <link href="http://yoursite.com/2017/08/07/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2017/08/07/数据分析/</id>
+    <published>2017-08-07T06:26:01.000Z</published>
+    <updated>2017-08-08T07:58:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="统计方法"><a href="#统计方法" class="headerlink" title="统计方法"></a>统计方法</h3><blockquote>
+<p>许多场景下经常会根据所谓的<em>经验之谈</em>来对某些事件总结观点获得结论。所谓的<em>经验之谈</em>在非正式场合下，这类说辞没有太大的问题，然后大多数时候，我们需要有说服力的正经以及可靠的结论，经验之谈明显不能做到这一点。</p>
+<ul>
+<li>经验之谈的缺点(同事也是影响有效调查的因素)：<ul>
+<li>观察数量少</li>
+<li>数据的选择性偏差</li>
+<li>确认偏差(一部分提供支持示例，一部分引用反例）</li>
+<li>数据的不准确</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>统计方法的手段</strong><blockquote>
+<ul>
+<li>收集数据: 使用大型的调查数据，这些往往是为了得出某个结论进行可靠地统计推断专门收集而来</li>
+<li>描述性统计: 计算能总计数据的统计量, 评测各种数据的可视化方法（表格图形法）</li>
+<li>探索性数据分析: 寻找模式、差异和其它能解决我们疑问的特征。同时检查不一致性，确认其局限性- 假设检验</li>
+<li>估计: 由数据进行推断</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h3 id="描述性统计"><a href="#描述性统计" class="headerlink" title="描述性统计"></a>描述性统计</h3><h4 id="集中趋势"><a href="#集中趋势" class="headerlink" title="集中趋势"></a>集中趋势</h4><blockquote>
+<p>中心测量值 –&gt; 数据集中趋势的度量</p>
+<ul>
+<li>众数: x轴上最高频率所对应的值（多众数无意义）</li>
+<li>中位数: 按顺序排列数据, 最中间的一位或者两位的平均数，包含异常值时，比均值更适合</li>
+<li>均值:算数平均数、调整平均数(去掉最大最小值)、加权平均数、几何平均数(几个数值[乘积]的[n次方根])</li>
+<li>分位数: 百分位数、四分位数(Q1、Q2、Q3, 即第25，50，75百分位数)</li>
+</ul>
+</blockquote>
+<h4 id="变异程度的度量"><a href="#变异程度的度量" class="headerlink" title="变异程度的度量"></a>变异程度的度量</h4><blockquote>
+<p>数据离散程度的度量</p>
+<ul>
+<li>极差: max-min</li>
+<li>四分位数间距(IQR): IQR = Q3 - Q1（中间50%数据的极差）</li>
+<li>方差: [离差]平方求和的均值 //TODO: 公式: 总体方差与样本方差</li>
+<li>标准偏差: 方差的正平方根（与原始数据的[单位度量]相同, 易于比较和解释）</li>
+</ul>
+</blockquote>
+<h4 id="分布形态的度量"><a href="#分布形态的度量" class="headerlink" title="分布形态的度量"></a>分布形态的度量</h4><blockquote>
+<p>偏度: 偏斜方向和程度(相对于正态分布)</p>
+<ul>
+<li>对称分布: 众数 = 中位数 = 均值</li>
+<li>正偏斜分布: 众数 &lt; 中位数 &lt; 均值</li>
+<li>负偏斜分布</li>
+</ul>
+</blockquote>
+<h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><blockquote>
+<p>数据归一化（标准化）是机器学习/数据挖掘的一项基础工作，是数据预处理的重要一步。样本各个特征往往具有不同的分布范围，通过归一化将各个维度的特征值映射到相同区间，使得各特征值具有相同量纲，处于同一数量级。</p>
+</blockquote>
+<h5 id="归一化的方法"><a href="#归一化的方法" class="headerlink" title="归一化的方法"></a>归一化的方法</h5><ol>
+<li><p><strong>min-miax归一化</strong></p>
+<p> 对各维特征值分别进行线性变换，使得各维特征值被映射到[0, 1]之间，转换函数如下：</p>
+ <center><img src="http://upload-images.jianshu.io/upload_images/5584618-56fbfd8270a2afd5.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据归一化"><br> min-max归一化转换函数</center>
+
+<p> 其中max为某一维特征值的最大值，min为某一维特征值的最小值。这种方法有个缺陷就是当有新样本加入时，可能导致max和min的变化，需要重新定义。</p>
+</li>
+<li><p><strong>z-score归一化</strong></p>
+<p> 这种方法用各维的均值和标准差来归一化各维特征值，它的转换函数为：</p>
+ <center><img src="http://upload-images.jianshu.io/upload_images/5584618-cb376c235f808bc7.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="机器学习之归一化"><br> z-score归一化转换函数</center>
+
+<p> 经过处理后，各维特征值符合标准正态分布。<br> 标准正态分布：曲线下方的面积是1;  众数=中位数=平均数, 关于均值左右对称<br> 其中，μ为所有样本数据的均值，σ为所有样本数据的标准差。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;统计方法&quot;&gt;&lt;a href=&quot;#统计方法&quot; class=&quot;headerlink&quot; title=&quot;统计方法&quot;&gt;&lt;/a&gt;统计方法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;许多场景下经常会根据所谓的&lt;em&gt;经验之谈&lt;/em&gt;来对某些事件总结观点获得结论。所谓的&lt;em&gt;经验之谈&lt;/em&gt;在非正式场合下，这类说辞没有太大的问题，然后大多数时候，我们需要有说服力的正经以及可靠的结论，经验之谈明显不能做到这一点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经验之谈的缺点(同事也是影响有效调查的因素)：&lt;ul&gt;
+&lt;li&gt;观察数量少&lt;/li&gt;
+&lt;li&gt;数据的选择性偏差&lt;/li&gt;
+&lt;li&gt;确认偏差(一部分提供支持示例，一部分引用反例）&lt;/li&gt;
+&lt;li&gt;数据的不准确&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统计方法的手段&lt;/strong&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;收集数据: 使用大型的调查数据，这些往往是为了得出某个结论进行可靠地统计推断专门收集而来&lt;/li&gt;
+&lt;li&gt;描述性统计: 计算能总计数据的统计量, 评测各种数据的可视化方法（表格图形法）&lt;/li&gt;
+&lt;li&gt;探索性数据分析: 寻找模式、差异和其它能解决我们疑问的特征。同时检查不一致性，确认其局限性- 假设检验&lt;/li&gt;
+&lt;li&gt;估计: 由数据进行推断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="数据分析" scheme="http://yoursite.com/categories/dataAnalysis/"/>
+    
+    
+      <category term="数据分析" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python代码优化</title>
+    <link href="http://yoursite.com/2017/08/07/python%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/"/>
+    <id>http://yoursite.com/2017/08/07/python代码优化/</id>
+    <published>2017-08-07T01:44:24.000Z</published>
+    <updated>2017-08-08T07:57:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="变量交换"><a href="#变量交换" class="headerlink" title="变量交换"></a>变量交换</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 大部分编程语言交换两个值需要引入临时变量进行书写</span></div><div class="line">a, b = <span class="number">1</span>, <span class="number">2</span></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line">a, b = b, a</div><div class="line"><span class="keyword">print</span> a, b</div></pre></td></tr></table></figure>
+<pre><code>2 1
+</code></pre><h4 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">li = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> li:</div><div class="line">    <span class="keyword">print</span> i</div><div class="line"><span class="comment"># 或者</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(li)):</div><div class="line">    <span class="keyword">print</span> li[i]</div><div class="line">    </div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">6</span>):</div><div class="line">    <span class="keyword">print</span> i</div></pre></td></tr></table></figure>
+<p>在python2中，xrang返回的是生成器对象， range返回的是列表对象，生成器对象比列表更节约内存，python3中只有range方法，直接返回生成器对象<br><a id="more"></a></p>
+<h4 id="带有索引位置的接遍历"><a href="#带有索引位置的接遍历" class="headerlink" title="带有索引位置的接遍历"></a>带有索引位置的接遍历</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">colors = [<span class="string">'red'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'blue'</span>, <span class="string">'grey'</span>]</div><div class="line"><span class="comment"># 遍历集合时如果需要使用到集合的索引位置时，直接对集合迭代是没有索引信息的</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(colors)):</div><div class="line">    <span class="keyword">print</span> index, <span class="string">'-&gt;'</span>, colors[index]</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">for</span> index, color <span class="keyword">in</span> enumerate(colors):</div><div class="line">    <span class="keyword">print</span> index, color</div></pre></td></tr></table></figure>
+<pre><code>0 -&gt; red
+1 -&gt; yellow
+2 -&gt; black
+3 -&gt; blue
+4 -&gt; grey
+0 red
+1 yellow
+2 black
+3 blue
+4 grey
+</code></pre><h4 id="字符串连接与拆分"><a href="#字符串连接与拆分" class="headerlink" title="字符串连接与拆分"></a>字符串连接与拆分</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 字符串连接普通方式是可以用 + 操作</span></div><div class="line">words = [<span class="string">'Thank'</span>, <span class="string">'you'</span>, <span class="string">'for'</span>, <span class="string">'your'</span>, <span class="string">'resubmission'</span>]</div><div class="line">s = words[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> word <span class="keyword">in</span> words[<span class="number">1</span>:]:</div><div class="line">    s += <span class="string">' '</span> + word</div><div class="line"><span class="keyword">print</span> s</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">print</span> <span class="string">' '</span>.join(words)</div><div class="line"></div><div class="line"><span class="comment"># 字符串拆分</span></div><div class="line"><span class="keyword">print</span> s.split(<span class="string">' '</span>)</div><div class="line"><span class="comment"># +每使用一次在内存中将生成一个新的字符串对象，造成无谓的内存浪费， join整个过程只会产生一个字符串对象</span></div></pre></td></tr></table></figure>
+<pre><code>Thank you for your resubmission
+Thank you for your resubmission
+[&apos;Thank&apos;, &apos;you&apos;, &apos;for&apos;, &apos;your&apos;, &apos;resubmission&apos;]
+</code></pre><h4 id="打开、关闭文件"><a href="#打开、关闭文件" class="headerlink" title="打开、关闭文件"></a>打开、关闭文件</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 执行文件操作时，最后必须进行文件的close操作，即使有异常，普通的方式是在finnally中显示的调用close方法</span></div><div class="line">f = open(<span class="string">'text.txt'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    data = f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    f.close()</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    data = f.read()</div><div class="line"><span class="comment"># 使用with关键字，系统会在执行完文件操作对象，自动关闭文件对象</span></div></pre></td></tr></table></figure>
+<h4 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 普通生产列表的方式</span></div><div class="line">res = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    res.append(i)</div><div class="line"><span class="keyword">print</span> res</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="comment"># 生成 0-3的列表</span></div><div class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</div><div class="line"><span class="comment"># 生成 0-3 的奇数列表</span></div><div class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>) <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>]</div></pre></td></tr></table></figure>
+<pre><code>[0, 1, 2, 3]
+[0, 1, 2, 3]
+[1, 3]
+</code></pre><h4 id="链式比较操作"><a href="#链式比较操作" class="headerlink" title="链式比较操作"></a>链式比较操作</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">15</span> <span class="keyword">and</span> age &lt; <span class="number">60</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'younger'</span></div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="keyword">if</span> <span class="number">15</span> &lt; age &lt; <span class="number">60</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'younger'</span></div><div class="line">    </div><div class="line"><span class="comment"># 链式操作</span></div><div class="line"><span class="keyword">False</span> == <span class="keyword">False</span> == <span class="keyword">True</span></div><div class="line"><span class="comment">#out: False</span></div></pre></td></tr></table></figure>
+<pre><code>younger
+younger
+False
+</code></pre><h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在c语言或者其它语言中有三目运算符‘:’</span></div><div class="line"><span class="comment"># 但是在Python之禅中: “There should be one— and preferably only one —obvious way to do it. ”。能用if else表达清楚逻辑运算，不需要增加另外一种方式</span></div><div class="line">b = <span class="number">1</span></div><div class="line">text = <span class="string">'true'</span> <span class="keyword">if</span> b == <span class="number">1</span> <span class="keyword">else</span> <span class="string">'false'</span></div><div class="line"><span class="keyword">print</span> text</div></pre></td></tr></table></figure>
+<pre><code>true
+</code></pre><h4 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a>else语句</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在python中，除了if外，其它的循环语句都有else语句  </span></div><div class="line"><span class="comment">#pythonic 写法</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">False</span>:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'while'</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>):</div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'for'</span></div></pre></td></tr></table></figure>
+<pre><code>while
+for
+</code></pre><h4 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 字符串格式化拼接方式</span></div><div class="line">str1 = <span class="string">"preferably"</span></div><div class="line">str2 = <span class="string">"obvious way"</span></div><div class="line">str3 = <span class="string">"There should be one— and %s only one —%s to do it. "</span> % (str1, str2)</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line">str4 = <span class="string">"There should be one— and &#123;s1&#125; only one —&#123;s2&#125; to do it. "</span>.format(s1=str1, s2 = str2)</div><div class="line"></div><div class="line"><span class="comment">#很难确定用format比%s代码量更少, 但是往往format方式更易于代码的理解</span></div><div class="line"><span class="keyword">print</span> str3</div><div class="line"><span class="keyword">print</span> str4</div></pre></td></tr></table></figure>
+<pre><code>There should be one— and preferably only one —obvious way to do it. 
+There should be one— and preferably only one —obvious way to do it. 
+</code></pre><h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 生成斐波拉契数列</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></div><div class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> b &lt; n:</div><div class="line">        res.append(b)</div><div class="line">        a, b = b, a+b</div><div class="line">    <span class="keyword">return</span> res</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib2</span><span class="params">(n)</span>:</span></div><div class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> a &lt; n:</div><div class="line">        <span class="keyword">yield</span> a</div><div class="line">        a, b = b, a + b</div><div class="line"></div><div class="line"><span class="comment"># 生成器的好处在于无需一次将所有的数据放入内存中，只有迭代元素时才返回该元素，列表是预先一次性将所有元素加载入内存，</span></div><div class="line"><span class="keyword">print</span> fib(<span class="number">5</span>)[<span class="number">2</span>]</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> fib2(<span class="number">5</span>):</div><div class="line">    <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<pre><code>2
+0
+1
+1
+2
+3
+</code></pre><h4 id="字典元素获取与预设字典值"><a href="#字典元素获取与预设字典值" class="headerlink" title="字典元素获取与预设字典值"></a>字典元素获取与预设字典值</h4><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1&gt; 字典元素的获取 </span></div><div class="line">dic = &#123;<span class="string">'name'</span>: <span class="string">'foo'</span>&#125;</div><div class="line"><span class="keyword">if</span> dic.has_key(<span class="string">'name'</span>):</div><div class="line">    <span class="keyword">print</span> dic[<span class="string">'name'</span>]</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'unknow'</span></div><div class="line"></div><div class="line"><span class="comment"># pythonic</span></div><div class="line"><span class="keyword">print</span> dic.get(<span class="string">'name'</span>, <span class="string">'unknow'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2&gt; 预设字典默认值</span></div><div class="line"><span class="comment"># 通过 key 分组的时候，不得不每次检查 key 是否已经存在于字典中。</span></div><div class="line">data = [(<span class="string">'foo'</span>, <span class="number">10</span>), (<span class="string">'bar'</span>, <span class="number">20</span>), (<span class="string">'foo'</span>, <span class="number">39</span>), (<span class="string">'bar'</span>, <span class="number">49</span>)]</div><div class="line">groups = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    <span class="keyword">if</span> key <span class="keyword">in</span> groups:</div><div class="line">        groups[key].append(value)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        groups[key] = [value]</div><div class="line"></div><div class="line"><span class="comment"># pythonic 写法</span></div><div class="line"><span class="comment"># 第一种方式</span></div><div class="line">groups2 = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    groups2.setdefault(key, []).append(value)</div><div class="line"></div><div class="line"><span class="comment"># 第二种方式</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line">groups3 = defaultdict(list)</div><div class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> data:</div><div class="line">    groups3[key].append(value)  </div><div class="line"></div><div class="line"><span class="keyword">print</span> groups</div><div class="line"><span class="keyword">print</span> groups2</div><div class="line"><span class="keyword">print</span> groups3</div></pre></td></tr></table></figure>
+<pre><code>foo
+foo
+{&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]}
+{&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]}
+defaultdict(&lt;type &apos;list&apos;&gt;, {&apos;foo&apos;: [10, 39], &apos;bar&apos;: [20, 49]})
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;变量交换&quot;&gt;&lt;a href=&quot;#变量交换&quot; class=&quot;headerlink&quot; title=&quot;变量交换&quot;&gt;&lt;/a&gt;变量交换&lt;/h4&gt;&lt;hr&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 大部分编程语言交换两个值需要引入临时变量进行书写&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;a, b = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# pythonic 写法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;a, b = b, a&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; a, b&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;2 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;循环遍历区间元素&quot;&gt;&lt;a href=&quot;#循环遍历区间元素&quot; class=&quot;headerlink&quot; title=&quot;循环遍历区间元素&quot;&gt;&lt;/a&gt;循环遍历区间元素&lt;/h4&gt;&lt;hr&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;li = [i &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; range(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; li:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; i&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 或者&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; range(len(li)):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; li[i]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# pythonic 写法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; xrange(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; i&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在python2中，xrang返回的是生成器对象， range返回的是列表对象，生成器对象比列表更节约内存，python3中只有range方法，直接返回生成器对象&lt;br&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>category/DataAnalysis</title>
+    <link href="http://yoursite.com/2017/07/26/descriptionStatistics/"/>
+    <id>http://yoursite.com/2017/07/26/descriptionStatistics/</id>
+    <published>2017-07-26T06:34:48.000Z</published>
+    <updated>2017-08-07T02:10:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述性统计-数值方法"><a href="#描述性统计-数值方法" class="headerlink" title="描述性统计-数值方法"></a>描述性统计-数值方法</h2><h4 id="中心位置的度量"><a href="#中心位置的度量" class="headerlink" title="中心位置的度量"></a>中心位置的度量</h4><ul>
+<li>平均数: 是一种数据位置的度量，用以了解整体数据，平均数分为:<ol>
+<li>算数平均数: 适用于普通简单的较直观的表现中心位置</li>
+<li>调整平均数: 删除p%大、小的数据后进行计算算数平均数</li>
+<li>加权平均数(每个数据有权值)</li>
+<li>几何平均数:当数据呈倍数关系或不对称分布时（增长率或生长率、动态发展速度）</li>
+</ol>
+</li>
+<li>平均数很容易受到极值的影响，因为数据并不能保证不存在异常的数据点。又是可以采用调整平均数计算平均数</li>
+<li>中位数: 数据进行升序排序后，位于中间的数值。当数据存在异常点的时候，中位数比均值更适合衡量</li>
+<li>众数: 数据集中出现次数最多的数据，代表数据的一般水平，当众数有多个时，称为多众数。多众数一般无意义。</li>
+<li>分位数: 百分位数</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;描述性统计-数值方法&quot;&gt;&lt;a href=&quot;#描述性统计-数值方法&quot; class=&quot;headerlink&quot; title=&quot;描述性统计-数值方法&quot;&gt;&lt;/a&gt;描述性统计-数值方法&lt;/h2&gt;&lt;h4 id=&quot;中心位置的度量&quot;&gt;&lt;a href=&quot;#中心位置的度量&quot; class
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二十三年过往喧嚣</title>
+    <link href="http://yoursite.com/2017/07/26/%E8%BF%87%E5%BE%80%E5%96%A7%E5%9A%A3/"/>
+    <id>http://yoursite.com/2017/07/26/过往喧嚣/</id>
+    <published>2017-07-26T00:36:20.000Z</published>
+    <updated>2017-07-27T03:24:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://fsv.cmoney.tw/cmstatic/notes/capture/232701/20150827180432193.jpg" alt="人生"><br><code>过去就像回形针，把青春一页页的固定，然后变成了一本不被出版的书。</code></p>
+<p>&emsp;&emsp;决定开始写下这第一篇博客时，或许是对自己人生的一种感悟，感悟过往种种，又或许是想要转变，思考过去二十几年的岁月。</p>
+<a id="more"></a>
+<p>&emsp;&emsp;回首过往的二十几年，有时很怀恋，怀恋过往青春，有时很憎恨，憎恨传统对人生带来的影响。但是不管怎么说，二十多年我挺过来了。现在仔细想想过去的生活，发现之前从来没有明白<em>未来</em>是什么意思。儿时的记忆没有太多，几乎都是三五个小伙伴四处疯、野的记忆，完全没有想过将来自己需要承担的东西很多很多。当踏入教室的那一刻起，不知不觉的，思想开始潜移默化的改变了，开始有了一种在笼子里太久了，厌倦了笼子里一成不变的生活，好想出去看看的感觉，但是那一刻认为，想要走出去，认为唯一的办法就是读书。但是后来发现，当我选择了读书的那一刻，一切的性质都变了 – 周围的目光，家庭的压力。还好在最后书没读好，但是还是走出去了，坚持到了大学，但是那些压力也给我自己造成了许多的心里创伤。</p>
+<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>&emsp;&emsp; 高中应该是对于学生来说最美好的时段，同时也是最有价值的时段，但是不幸，我没有完全融入那段生活，但是多多少少也有点高中时期的美好，现在还是挺怀恋的，但是更多的是遗憾。但是到了大学，自由、放纵占据了生活，终于不用整天去面对繁重的书本，沉重的压力去学习，从来没有想过该去做些有价值的事情，将时间投入到什么地方。直到大三开始，才开始真正的思考，工作、就业的问题，才开始思考我未来需要的是什么，在哪里，当我走出校园的那一刻，我是以什么样的角色去立足于这个社会，甚至在毕业几年后自己何去何从，那个时候开始就自己的专业方向开始定位自己的角色，但是不幸，对社会认知理念太少，稀里糊涂的选择程序员的某个方向，直到今天，才开始重新定位自己、审视自己</p>
+<p>&emsp;&emsp; 在学生时期很内向，脾气怪异，甚至是孤僻，社交活动很少，甚至不明白还有人心叵测这一说，现在回看，发现自己处于自己的内心时间，挥霍了太多青春，同时也失去了太多的改变自己的机遇。大学毕业的这一年，我也挥霍了一次青春，这是我最后悔的一次挥霍，这一次让我深深的需要深刻的反省自己，才让我进入那早该进入的性格改变期，改变自己挥霍时间、挥霍青春的性格，改变自己高傲、孤僻的性格，这一刻，认识到，真的需要踏出去了，能力很重要。</p>
+<h2 id="自省"><a href="#自省" class="headerlink" title="自省"></a>自省</h2><h4 id="自省-1"><a href="#自省-1" class="headerlink" title="自省"></a>自省</h4><p>&emsp;&emsp;认识自己的问题才能更好的解决问题。反思自己现在的态度与行为，是否有积极主动的学？抱着什么样的念头去学？是否还在用别人的标准来衡量自己？是否还在为鸡毛蒜皮的是烦恼，不知轻重？</p>
+<p>&emsp;&emsp;当今天重新审视自己的问题的时候，发现确确实实的存在这些问题，漫无目的的学，没有规划性的学习，内心强大的攀比心理，经常不知事情轻重。这一刻才明白体会到自律与自控力的重要，优秀需要一点点的积累，无法一步青云，术业有专攻。</p>
+<h4 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h4><p>&emsp;&emsp;现在每天都有读书的习惯，目前所看的书有技术方向、软技能方面的书，但是在读过一本书之后，是否有真正的理解书本的技巧，是否真的的有自己的理解，这也是开始写博客的初衷之一，只有记录，才能明白自己从读书里面真正的学到了什么，理解了什么。</p>
+<h4 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h4><p>&emsp;&emsp;开始这篇博客，就需要时刻记录自己的成长。写作需要深度思考，对文字的灵活运用能力，甚至在职场中，写作仍然是一种非常重要的能力。程序员的技术性文档，源码阅读后的深思理解记录，软件使用文档，技术书籍的读后感。</p>
+<h4 id="社交"><a href="#社交" class="headerlink" title="社交"></a>社交</h4><p>&emsp;&emsp;直到准备写这个地方的时候，才在深深的思考，社交是什么，甚至是询问自己，你有社交能力吗？社交需要走出去，用心去聆听，用心去体会，甚至是用心的去交流，情绪与性格会影响社交能力，需要调整心情，转变性格，平易近人。</p>
+<h4 id="锻炼"><a href="#锻炼" class="headerlink" title="锻炼"></a>锻炼</h4><p>&emsp;&emsp;成功需要身体作为基础，不然真的可能最后学习的内容是颈椎病康复指南，久坐的人一般都是出于亚健康状态，每周三两次锻炼或者周末骑行都是锻炼的一种方式。</p>
+<h4 id="技术方向"><a href="#技术方向" class="headerlink" title="技术方向"></a>技术方向</h4><p>&emsp;&emsp;省视自己过往二十几年的时间，最后悔的就是技术问题，很后悔在大学期间没有认真学好数学与计算机相关的理论知识，甚至是没有一门精通性的语言。大学主要课程语言是C/C++，大学的放纵，让我成功的避过了学好这些课程最好的时机，现在只能回头恶补，每一门技术方向，基础或许很简单，但是开始深入学习所选择的技术方向的时候，需要询问自己基础是否融会贯通。技术方向固然很重要，但是基础是技术的基石，根基不稳，技术也不会理解太通彻。</p>
+<h4 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h4><p>&emsp;&emsp;英语是现在头疼的一点，当真正省视技术方向时，发现大多的文档都是英语文档，甚至现在很多前沿技术性的文档也是英语文档，或许可以等待翻译，但是翻译周期长，甚至翻译的文档往往带有翻译者的个人看法在里面，同一篇文章，十个人读有十种不同的感悟。背单词、听、说、读、写，现在将这些所谓的后悔转变成现在去学习的动力，开启自己计划学习。</p>
+<hr>
+<p>&emsp;&emsp;今天，在这里记录下自己对过往的总结，对现如今生活的不满意，接下来，就该用自己的整个人生去为自己拼搏，相信总会有成功的一天。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://fsv.cmoney.tw/cmstatic/notes/capture/232701/20150827180432193.jpg&quot; alt=&quot;人生&quot;&gt;&lt;br&gt;&lt;code&gt;过去就像回形针，把青春一页页的固定，然后变成了一本不被出版的书。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;决定开始写下这第一篇博客时，或许是对自己人生的一种感悟，感悟过往种种，又或许是想要转变，思考过去二十几年的岁月。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="记录" scheme="http://yoursite.com/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="记录" scheme="http://yoursite.com/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+</feed>
