@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="冷颜の‘s blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS Objectice-CiOS常用第三方库iOS Swift 面试&amp;amp;工作-博主\博文iOS-UIApplication简介iOS开发常用三方库、插件、知名博客iOS上架各类问题汇总iOS各类小技巧总结iOS:使用贝塞尔曲线绘制图表（折线图、柱状图、饼状图）禅与 Objective-C 编程艺术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="资料整理">
+<meta property="og:url" content="http://yoursite.com/2017/08/18/资料整理/index.html">
+<meta property="og:site_name" content="冷颜の‘s blog">
+<meta property="og:description" content="iOS Objectice-CiOS常用第三方库iOS Swift 面试&amp;amp;工作-博主\博文iOS-UIApplication简介iOS开发常用三方库、插件、知名博客iOS上架各类问题汇总iOS各类小技巧总结iOS:使用贝塞尔曲线绘制图表（折线图、柱状图、饼状图）禅与 Objective-C 编程艺术">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-18T06:47:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="资料整理">
+<meta name="twitter:description" content="iOS Objectice-CiOS常用第三方库iOS Swift 面试&amp;amp;工作-博主\博文iOS-UIApplication简介iOS开发常用三方库、插件、知名博客iOS上架各类问题汇总iOS各类小技巧总结iOS:使用贝塞尔曲线绘制图表（折线图、柱状图、饼状图）禅与 Objective-C 编程艺术">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/18/资料整理/"/>
+
+
+
+
+
+  <title>资料整理 | 冷颜の‘s blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冷颜の‘s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">There is no substitute to hard work, first in, first out</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/资料整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冷颜の">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/1767523-e8ada6f529a7b7a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冷颜の‘s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">资料整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T14:18:15+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  946 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><hr>
+<h3 id="Objectice-C"><a href="#Objectice-C" class="headerlink" title="Objectice-C"></a>Objectice-C</h3><p><a href="http://www.jianshu.com/p/c8152d6ce957" target="_blank" rel="external">iOS常用第三方库</a><br><a href="https://juejin.im/post/5945187afe88c2006a74076a" target="_blank" rel="external">iOS Swift 面试&amp;工作-博主\博文</a><br><a href="http://www.jianshu.com/p/4daa99b73a1d" target="_blank" rel="external">iOS-UIApplication简介</a><br><a href="https://github.com/Tim9Liu9/TimLiu-iOS" target="_blank" rel="external">iOS开发常用三方库、插件、知名博客</a><br><a href="https://github.com/wg689/Solve-App-Store-Review-Problem#%E9%97%AE%E9%A2%98ipv6%E8%A2%AB%E6%8B%92%E7%BB%9D" target="_blank" rel="external">iOS上架各类问题汇总</a><br><a href="http://www.jianshu.com/p/4523eafb4cd4" target="_blank" rel="external">iOS各类小技巧总结</a><br><a href="http://www.cnblogs.com/XYQ-208910/p/5694749.html" target="_blank" rel="external">iOS:使用贝塞尔曲线绘制图表（折线图、柱状图、饼状图）</a><br><a href="https://github.com/oa414/objc-zen-book-cn#swift" target="_blank" rel="external">禅与 Objective-C 编程艺术</a><br><a id="more"></a><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a><br><a href="http://www.jianshu.com/p/66bc16b872d7" target="_blank" rel="external">iOS10 适配、Xcode8配置总结</a><br><a href="http://jinqianchina.github.io/2015/10/17/UITextView-UITextField%E6%A3%80%E6%B5%8B%E5%B9%B6%E8%BF%87%E6%BB%A4Emoji%E8%A1%A8%E6%83%85%E7%AC%A6%E5%8F%B7/" target="_blank" rel="external">UITextView/UITextField检测并过滤Emoji表情符号</a><br><a href="http://www.jianshu.com/p/8883b4a7ed98" target="_blank" rel="external">iOS 手势解锁功能</a><br><a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a><br><a href="http://www.liuchungui.com/blog/2015/11/24/uicollectionviewdong-hua/" target="_blank" rel="external">UICollectionView动画</a><br><a href="http://www.jianshu.com/p/b2c9e1e5a642" target="_blank" rel="external">iOS 视频播放的四种方式</a><br><a href="http://www.cocoachina.com/ios/20150602/11968.html" target="_blank" rel="external">UITableView 优化技巧</a><br><a href="http://qingmang.me/articles/773874873800098340/" target="_blank" rel="external">苹果开发者账号及邓白氏编码的申请</a><br><a href="https://github.com/airbnb/lottie-ios" target="_blank" rel="external">An iOS library to natively render After Effects vector animations </a><br><a href="http://www.swifthumb.com/thread-11284-1-1.html" target="_blank" rel="external">iOS面试题</a></p>
+<h3 id="swift"><a href="#swift" class="headerlink" title="swift"></a>swift</h3><p><a href="https://github.com/ipader/SwiftGuide#welcome" target="_blank" rel="external">Swift 语言指南</a><br><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">Swift guide</a><br><a href="http://www.jianshu.com/p/3111087ca081" target="_blank" rel="external">Swift写服务器</a><br><a href="http://www.hangge.com/blog/cache/category_72_1.html" target="_blank" rel="external">Swift-航歌-编程社区</a><br><a href="http://www.jianshu.com/p/c6c9ac80b75f" target="_blank" rel="external">Swift 实现格瓦拉转场</a><br><a href="http://www.devashen.com/blog/2016/01/07/datasafety/" target="_blank" rel="external">iOS 常用加密方法</a><br><a href="http://www.devstore.cn/essay/essayInfo/7970.html" target="_blank" rel="external">39个优秀的Swift UI开源库</a><br><a href="http://www.swifthumb.com/forum.php?mod=collection&amp;action=view&amp;ctid=61" target="_blank" rel="external">Swift笔试面试题库</a></p>
+<h2 id="心灵鸡汤"><a href="#心灵鸡汤" class="headerlink" title="心灵鸡汤"></a>心灵鸡汤</h2><hr>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNjc5MTEyNw==&amp;mid=2652357278&amp;idx=1&amp;sn=a2458b07b4351276dc3fe79aecf9ba7e&amp;scene=21#wechat_redirect" target="_blank" rel="external">19-24岁做什么事才能少走冤枉路</a><br><a href="http://www.jianshu.com/p/6e9937e8790f" target="_blank" rel="external">25-30岁如何找到自己的毕生事业？</a><br><a href="https://www.kancloud.cn/luofei614/programmer_talk_life/107490" target="_blank" rel="external">内外兼修·程序员成长之路</a><br><a href="http://justjavac.com/other/2012/09/20/a-programmer-mentees-recommendations.html" target="_blank" rel="external">程序员之路——一个老程序员对刚上大学的学弟学妹的忠告</a><br><a href="http://blog.jobbole.com/107445/" target="_blank" rel="external">写给程序员的有效学习方法</a><br><a href="http://www.jianshu.com/p/c5ee74eabaa1" target="_blank" rel="external">为了不让彼此错过，在您做出决定之前，请给我1分钟的面谈机会，好吗？谢谢！</a><br><a href="http://www.jianshu.com/p/60dbea95a980" target="_blank" rel="external">投资理财，从这里开始</a><br><a href="http://coolshell.cn/articles/4990.html" target="_blank" rel="external">程序员技术练级攻略</a><br><a href="http://blog.jobbole.com/821/" target="_blank" rel="external">程序员的本质</a><br><a href="http://blog.jobbole.com/100737/?utm_source=top.jobbole.com&amp;utm_medium=relatedArticles" target="_blank" rel="external">编程超过 30 年，我是如何避开倦怠期的？</a></p>
+<h2 id="算法与编程技巧"><a href="#算法与编程技巧" class="headerlink" title="算法与编程技巧"></a>算法与编程技巧</h2><hr>
+<p><a href="https://zhuanlan.zhihu.com/p/23191006" target="_blank" rel="external">[数据结构、算法] 的资源推荐</a><br><a href="http://www.jianshu.com/p/3c4a5fbd4b67" target="_blank" rel="external">算法相关文章索引</a><br><a href="http://zh.lucida.me/blog/on-learning-algorithms/" target="_blank" rel="external">算法学习之路</a><br><a href="http://www.jianshu.com/p/65768cd62757" target="_blank" rel="external">23 种设计模式-java实现</a><br><a href="http://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="external">图说设计模式</a><br><a href="http://coolshell.cn/articles/240.html" target="_blank" rel="external">编程技术教程</a><br><a href="https://www.hrwhisper.me/leetcode-algorithm-solution/" target="_blank" rel="external">Leetcode 算法题解</a></p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><hr>
+<p><a href="http://www.cnblogs.com/Jenaral/p/5655958.html" target="_blank" rel="external">Git本地项目上传 &amp; SourceTree &amp; GitHub 简单使用</a><br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">git教程-廖雪峰</a></p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><hr>
+<p><a href="https://segmentfault.com/a/1190000010706695#articleHeader9" target="_blank" rel="external">写给大家看的设计模式 - C/C++ 的奇技淫巧</a><br><a href="http://c.biancheng.net/cpp/u/jiaocheng/" target="_blank" rel="external">C语言入门教程：c语言从入门到精通</a></p>
+<h2 id="书籍推荐总览"><a href="#书籍推荐总览" class="headerlink" title="书籍推荐总览"></a>书籍推荐总览</h2><hr>
+<p><a href="http://www.jianshu.com/p/43bac8c0cbe8" target="_blank" rel="external">英语学习推荐</a><br><a href="http://justjavac.com/other/2012/05/15/qualified-programmer-should-read-what-books.html" target="_blank" rel="external">一个合格的程序员应该读过哪些书</a><br><a href="http://blog.jobbole.com/1383/" target="_blank" rel="external">一些经典的计算机书籍</a><br><a href="https://www.zhihu.com/question/50408698" target="_blank" rel="external">有哪些你看了以后大呼过瘾的编程书？</a><br><a href="https://zhuanlan.zhihu.com/p/22881223" target="_blank" rel="external">Google Interview University</a><br><a href="https://linuxstory.org/free-chinese-programming-books/" target="_blank" rel="external">编程类开放书籍荟萃</a><br><a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="external">免费的编程中文书籍索引</a><br><a href="https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#objective-c" target="_blank" rel="external">free-programming-books</a><br><a href="https://www.it-ebooks.info/" target="_blank" rel="external">IT eBooks(下载)</a><br><a href="http://blog.jobbole.com/107035/" target="_blank" rel="external">给编程生涯充电的 10 本书</a><br><a href="http://blog.jobbole.com/106093/" target="_blank" rel="external">推荐编程技术书列表</a><br><a href="http://blog.didiaoyuan.com/2017/04/18/%E6%80%BB%E6%9C%89%E4%BD%A0%E8%A6%81%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%A6%E5%8D%95%EF%BC%88GitHub-%EF%BC%89/" target="_blank" rel="external">总有你要的编程书单（GitHub)</a><br><a href="https://zhuanlan.zhihu.com/p/23857699" target="_blank" rel="external">程序员的书籍资源</a><br><a href="https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#c-1" target="_blank" rel="external">free-programming-books/free-programming-books.md at master · EbookFoundation/free-programming-books</a><br><a href="http://blog.csdn.net/ajian005/article/details/51206976" target="_blank" rel="external">StuQ 技能图谱（全套13张）</a></p>
+<h2 id="网站合集"><a href="#网站合集" class="headerlink" title="网站合集"></a>网站合集</h2><hr>
+<p><a href="http://www.xiapistudio.com/" target="_blank" rel="external">虾皮工作室</a><br><a href="http://www.niaogebiji.com/isites.php" target="_blank" rel="external">鸟哥笔记</a><br><a href="http://www.afenxi.com/" target="_blank" rel="external">数据分析网</a><br><a href="http://www.devstore.cn/" target="_blank" rel="external">Dev Store</a><br><a href="http://www.jianshu.com/p/9f094ce31075" target="_blank" rel="external">自学编程的12个网站</a><br><a href="http://www.jianshu.com/p/db02bc37095b" target="_blank" rel="external">PPT速效装逼的8个网站</a><br><a href="http://www.igeekbar.com/igeekbar/post/291.htm" target="_blank" rel="external">挑战最强大脑–10个烧脑编程挑战网站</a><br><a href="http://www.devstore.cn/essay/essayInfo/5904.html" target="_blank" rel="external">38个学习新技能的最佳网站</a><br><a href="https://zhuanlan.zhihu.com/p/23005451" target="_blank" rel="external">16个小众却很实用的网站（程序员 向）</a></p>
+<h2 id="文档编辑"><a href="#文档编辑" class="headerlink" title="文档编辑"></a>文档编辑</h2><hr>
+<p><a href="http://data-blog.udacity.com/posts/2016/10/latex-primer/" target="_blank" rel="external">Latex</a></p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><hr>
+<p><a href="https://www.douban.com/group/topic/42095476/" target="_blank" rel="external">Python教程-豆瓣</a><br><a href="https://juejin.im/post/59489de7128fe1006a576ddc" target="_blank" rel="external">Django 入门教程</a><br><a href="https://www.zhihu.com/question/29372574" target="_blank" rel="external">Python 的练手项目推荐</a><br><a href="https://juejin.im/entry/58469472ac502e006b098cc9" target="_blank" rel="external">Python 网络爬虫实战项目代码大全</a><br><a href="https://doc.odoo.com/7.0/zh_CN/contribute/15_guidelines/coding_guidelines_python/#use-constants-and-avoid-magic-numbers" target="_blank" rel="external">Python代码风格指南</a><br><a href="http://101python.cn/" target="_blank" rel="external">Python 实战</a><br><a href="https://mp.weixin.qq.com/s/mB-H-hSxAteJjMwLSVuPFA" target="_blank" rel="external">Python之禅文章集锦</a><br><a href="https://zhuanlan.zhihu.com/p/28008875?utm_source=wechat_session&amp;utm_medium=social" target="_blank" rel="external">59个Python使用技巧</a><br><a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/" target="_blank" rel="external">Python 2.7教程 廖雪峰</a><br><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="external">Python 3教程 廖雪峰</a><br><a href="http://python.jobbole.com/87527/?repeat=w3tc" target="_blank" rel="external">左手程序员，右手作家：你必须会的Jupyter Notebook</a><br><a href="http://pandas.pydata.org/pandas-docs/stable/dsintro.html#panel" target="_blank" rel="external">Intro to Data Structures — pandas 0.20.3 documentation</a><br><a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html" target="_blank" rel="external">Group By: split-apply-combine</a><br><a href="https://pandas.pydata.org/pandas-docs/stable/missing_data.html" target="_blank" rel="external">Working with missing data</a></p>
+<h2 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h2><hr>
+<p><a href="http://student.zjzk.cn/course_ware/web_xlyjytjx/skxt/kcml.htm" target="_blank" rel="external">统计学</a><br><a href="https://github.com/JustFollowUs/Machine-Learning" target="_blank" rel="external">Machine-Learning</a><br><a href="https://github.com/ZuzooVn/machine-learning-for-software-engineers/blob/master/README-zh-CN.md" target="_blank" rel="external">软件工程师的机器学习</a><br><a href="http://mooc.guokr.com/note/16274/" target="_blank" rel="external">斯坦福大学机器学习个人笔记完整版（附所有视频和字幕）</a><br><a href="https://yoyoyohamapi.gitbooks.io/mit-ml/content/" target="_blank" rel="external">斯坦福机器学习笔记</a><br><a href="https://woaielf.github.io/2016/09/11/data-science/" target="_blank" rel="external">数据科学技能树</a><br><a href="https://yanqiangmiffy.github.io/2017/07/26/Python28-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BD%BF%E7%94%A8Python%E5%92%8CR%E4%BB%A3%E7%A0%81%EF%BC%89/" target="_blank" rel="external">机器学习算法的基本知识（使用Python和R代码）</a><br><a href="https://yq.aliyun.com/articles/86580?utm_content=m_23978" target="_blank" rel="external">深度学习入门系列，用白话文的方式让你看得懂学的快</a><br><a href="https://github.com/Tim9Liu9/TimLiu-iOS" target="_blank" rel="external">Values of the Pearson Correlation</a><br><a href="https://github.com/wxyyxc1992/DataScience-And-MachineLearning-Handbook-For-Coders" target="_blank" rel="external">程序猿的数据科学与机器学习实战手册</a><br><a href="https://zhuanlan.zhihu.com/p/22838288" target="_blank" rel="external">人工智能公开课</a></p>
+
+      
+    </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    <div>
+      
+        
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/17/Numpy的使用/" rel="next" title="Numpy的使用">
+                <i class="fa fa-chevron-left"></i> Numpy的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/1767523-e8ada6f529a7b7a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="冷颜の" />
+          <p class="site-author-name" itemprop="name">冷颜の</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/your-user-name" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/966c5b93e850" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/59505f8a6fb9a06bbd6f55c2" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.baidu.com/" title="百度" target="_blank">百度</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS"><span class="nav-number">1.</span> <span class="nav-text">iOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Objectice-C"><span class="nav-number">1.1.</span> <span class="nav-text">Objectice-C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swift"><span class="nav-number">1.2.</span> <span class="nav-text">swift</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心灵鸡汤"><span class="nav-number">2.</span> <span class="nav-text">心灵鸡汤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法与编程技巧"><span class="nav-number">3.</span> <span class="nav-text">算法与编程技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">4.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">5.</span> <span class="nav-text">C/C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书籍推荐总览"><span class="nav-number">6.</span> <span class="nav-text">书籍推荐总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网站合集"><span class="nav-number">7.</span> <span class="nav-text">网站合集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档编辑"><span class="nav-number">8.</span> <span class="nav-text">文档编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">9.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-Learning"><span class="nav-number">10.</span> <span class="nav-text">Machine Learning</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-tint"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冷颜の</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</html>
