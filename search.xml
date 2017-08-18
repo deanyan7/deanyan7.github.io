@@ -4,6 +4,9 @@
     <title><![CDATA[资料整理]]></title>
     <url>%2F2017%2F08%2F18%2F%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86%2F</url>
     <content type="text"><![CDATA[iOS Objectice-CiOS常用第三方库iOS Swift 面试&amp;工作-博主\博文iOS-UIApplication简介iOS开发常用三方库、插件、知名博客iOS上架各类问题汇总iOS各类小技巧总结iOS:使用贝塞尔曲线绘制图表（折线图、柱状图、饼状图）禅与 Objective-C 编程艺术iOS-Core-Animation-Advanced-TechniquesiOS10 适配、Xcode8配置总结UITextView/UITextField检测并过滤Emoji表情符号iOS 手势解锁功能iOS 保持界面流畅的技巧UICollectionView动画iOS 视频播放的四种方式UITableView 优化技巧苹果开发者账号及邓白氏编码的申请An iOS library to natively render After Effects vector animations iOS面试题 swiftSwift 语言指南Swift guideSwift写服务器Swift-航歌-编程社区Swift 实现格瓦拉转场iOS 常用加密方法39个优秀的Swift UI开源库Swift笔试面试题库 心灵鸡汤 19-24岁做什么事才能少走冤枉路25-30岁如何找到自己的毕生事业？内外兼修·程序员成长之路程序员之路——一个老程序员对刚上大学的学弟学妹的忠告写给程序员的有效学习方法为了不让彼此错过，在您做出决定之前，请给我1分钟的面谈机会，好吗？谢谢！投资理财，从这里开始程序员技术练级攻略程序员的本质编程超过 30 年，我是如何避开倦怠期的？ 算法与编程技巧 [数据结构、算法] 的资源推荐算法相关文章索引算法学习之路23 种设计模式-java实现图说设计模式编程技术教程Leetcode 算法题解 git Git本地项目上传 &amp; SourceTree &amp; GitHub 简单使用git教程-廖雪峰 C/C++ 写给大家看的设计模式 - C/C++ 的奇技淫巧C语言入门教程：c语言从入门到精通 书籍推荐总览 英语学习推荐一个合格的程序员应该读过哪些书一些经典的计算机书籍有哪些你看了以后大呼过瘾的编程书？Google Interview University编程类开放书籍荟萃免费的编程中文书籍索引free-programming-booksIT eBooks(下载)给编程生涯充电的 10 本书推荐编程技术书列表总有你要的编程书单（GitHub)程序员的书籍资源free-programming-books/free-programming-books.md at master · EbookFoundation/free-programming-booksStuQ 技能图谱（全套13张） 网站合集 虾皮工作室鸟哥笔记数据分析网Dev Store自学编程的12个网站PPT速效装逼的8个网站挑战最强大脑–10个烧脑编程挑战网站38个学习新技能的最佳网站16个小众却很实用的网站（程序员 向） 文档编辑 Latex Python Python教程-豆瓣Django 入门教程Python 的练手项目推荐Python 网络爬虫实战项目代码大全Python代码风格指南Python 实战Python之禅文章集锦59个Python使用技巧Python 2.7教程 廖雪峰Python 3教程 廖雪峰左手程序员，右手作家：你必须会的Jupyter NotebookIntro to Data Structures — pandas 0.20.3 documentationGroup By: split-apply-combineWorking with missing data Machine Learning 统计学Machine-Learning软件工程师的机器学习斯坦福大学机器学习个人笔记完整版（附所有视频和字幕）斯坦福机器学习笔记数据科学技能树机器学习算法的基本知识（使用Python和R代码）深度学习入门系列，用白话文的方式让你看得懂学的快Values of the Pearson Correlation程序猿的数据科学与机器学习实战手册人工智能公开课]]></content>
+      <categories>
+        <category>资料集合</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Numpy的使用]]></title>
@@ -35,8 +38,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
