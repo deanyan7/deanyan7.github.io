@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-21T02:33:34.000Z</updated>
+  <updated>2017-08-21T02:59:21.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pandas缺失数据处理</title>
+    <link href="http://yoursite.com/2017/08/21/pandas%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+    <id>http://yoursite.com/2017/08/21/pandas缺失数据处理/</id>
+    <published>2017-08-21T02:39:48.000Z</published>
+    <updated>2017-08-21T02:59:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 定义数据</span></div><div class="line">dates = pd.date_range(<span class="string">'20170101'</span>, periods = <span class="number">6</span>)</div><div class="line">df = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>, <span class="number">4</span>)), index = dates, columns = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>])</div><div class="line"><span class="comment"># 假设缺少数据</span></div><div class="line">df.iloc[<span class="number">1</span>, <span class="number">1</span>] = np.nan</div><div class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = np.nan</div><div class="line">df.iloc[<span class="number">1</span>, <span class="number">3</span>] = np.nan</div><div class="line">df.iloc[<span class="number">4</span>] = np.nan</div><div class="line"><span class="keyword">print</span> df</div></pre></td></tr></table></figure>
+<pre><code>               A     B     C     D
+2017-01-01   0.0   1.0   2.0   3.0
+2017-01-02   4.0   NaN   6.0   NaN
+2017-01-03   8.0   9.0   NaN  11.0
+2017-01-04  12.0  13.0  14.0  15.0
+2017-01-05   NaN   NaN   NaN   NaN
+2017-01-06  20.0  21.0  22.0  23.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 判断是否缺失数据</span></div><div class="line">df.isnull()</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><img src="http://upload-images.jianshu.io/upload_images/1767523-0eb1acfba7f45106.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="99D50414-4497-45CE-80F1-456FDECBB8D4.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看数据信息情况</span></div><div class="line">df.info()</div></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+DatetimeIndex: 6 entries, 2017-01-01 to 2017-01-06
+Freq: D
+Data columns (total 4 columns):
+A    5 non-null float64
+B    4 non-null float64
+C    4 non-null float64
+D    4 non-null float64
+dtypes: float64(4)
+memory usage: 240.0 bytes
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 判断是否存在缺失数据的情况</span></div><div class="line">np.any(df.isnull() == <span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<pre><code>True
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 按行或者按列来舍弃数据, how = all or any, any是默认值</span></div><div class="line">df.dropna(axis = <span class="number">0</span>, how = <span class="string">'any'</span>)</div><div class="line">df.dropna(axis = <span class="number">0</span>, how = <span class="string">'all'</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1767523-b64b32c726558bcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="31FB5CFF-E902-4DCE-A966-8AC1BAC9DB12.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 填充数据</span></div><div class="line">df.fillna(value = <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1767523-013cd8b39a0d0101.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DA6C6076-5917-4F08-950F-E47AC164A70F.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pandas &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; pd&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; np&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; matplotlib.pylab &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; plt&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 定义数据&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;dates = pd.date_range(&lt;span class=&quot;string&quot;&gt;&#39;20170101&#39;&lt;/span&gt;, periods = &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df = pd.DataFrame(np.arange(&lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;).reshape((&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)), index = dates, columns = [&lt;span class=&quot;string&quot;&gt;&#39;A&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;B&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;C&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;D&#39;&lt;/span&gt;])&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 假设缺少数据&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df.iloc[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;] = np.nan&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df.iloc[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] = np.nan&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df.iloc[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;] = np.nan&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df.iloc[&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;] = np.nan&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; df&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;               A     B     C     D
+2017-01-01   0.0   1.0   2.0   3.0
+2017-01-02   4.0   NaN   6.0   NaN
+2017-01-03   8.0   9.0   NaN  11.0
+2017-01-04  12.0  13.0  14.0  15.0
+2017-01-05   NaN   NaN   NaN   NaN
+2017-01-06  20.0  21.0  22.0  23.0
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 判断是否缺失数据&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;df.isnull()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>matplotlib绘制图形</title>
