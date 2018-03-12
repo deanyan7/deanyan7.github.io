@@ -755,41 +755,6 @@ defaultdict(&lt;type &apos;list&apos;&gt;, {&apos;foo&apos;: [10, 39], &apos;bar
   </entry>
   
   <entry>
-    <title>category/DataAnalysis</title>
-    <link href="http://yoursite.com/2017/07/26/descriptionStatistics/"/>
-    <id>http://yoursite.com/2017/07/26/descriptionStatistics/</id>
-    <published>2017-07-26T06:34:48.000Z</published>
-    <updated>2017-08-07T02:10:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述性统计-数值方法"><a href="#描述性统计-数值方法" class="headerlink" title="描述性统计-数值方法"></a>描述性统计-数值方法</h2><h4 id="中心位置的度量"><a href="#中心位置的度量" class="headerlink" title="中心位置的度量"></a>中心位置的度量</h4><ul>
-<li>平均数: 是一种数据位置的度量，用以了解整体数据，平均数分为:<ol>
-<li>算数平均数: 适用于普通简单的较直观的表现中心位置</li>
-<li>调整平均数: 删除p%大、小的数据后进行计算算数平均数</li>
-<li>加权平均数(每个数据有权值)</li>
-<li>几何平均数:当数据呈倍数关系或不对称分布时（增长率或生长率、动态发展速度）</li>
-</ol>
-</li>
-<li>平均数很容易受到极值的影响，因为数据并不能保证不存在异常的数据点。又是可以采用调整平均数计算平均数</li>
-<li>中位数: 数据进行升序排序后，位于中间的数值。当数据存在异常点的时候，中位数比均值更适合衡量</li>
-<li>众数: 数据集中出现次数最多的数据，代表数据的一般水平，当众数有多个时，称为多众数。多众数一般无意义。</li>
-<li>分位数: 百分位数</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;描述性统计-数值方法&quot;&gt;&lt;a href=&quot;#描述性统计-数值方法&quot; class=&quot;headerlink&quot; title=&quot;描述性统计-数值方法&quot;&gt;&lt;/a&gt;描述性统计-数值方法&lt;/h2&gt;&lt;h4 id=&quot;中心位置的度量&quot;&gt;&lt;a href=&quot;#中心位置的度量&quot; class
-    
-    </summary>
-    
-      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>二十三年过往喧嚣</title>
     <link href="http://yoursite.com/2017/07/26/%E8%BF%87%E5%BE%80%E5%96%A7%E5%9A%A3/"/>
     <id>http://yoursite.com/2017/07/26/过往喧嚣/</id>
