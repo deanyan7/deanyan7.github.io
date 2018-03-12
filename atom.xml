@@ -552,6 +552,119 @@ array([ 155.,   88.,   21.])
   </entry>
   
   <entry>
+    <title>数据分析</title>
+    <link href="http://yoursite.com/2017/08/07/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2017/08/07/数据分析/</id>
+    <published>2017-08-07T06:26:01.000Z</published>
+    <updated>2018-03-12T07:07:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="统计方法"><a href="#统计方法" class="headerlink" title="统计方法"></a>统计方法</h3><blockquote>
+<p>许多场景下经常会根据所谓的<em>经验之谈</em>来对某些事件总结观点获得结论。所谓的<em>经验之谈</em>在非正式场合下，这类说辞没有太大的问题，然后大多数时候，我们需要有说服力的正经以及可靠的结论，经验之谈明显不能做到这一点。</p>
+<ul>
+<li>经验之谈的缺点(同事也是影响有效调查的因素)：<ul>
+<li>观察数量少</li>
+<li>数据的选择性偏差</li>
+<li>确认偏差(一部分提供支持示例，一部分引用反例）</li>
+<li>数据的不准确</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>统计方法的手段</strong><blockquote>
+<ul>
+<li>收集数据: 使用大型的调查数据，这些往往是为了得出某个结论进行可靠地统计推断专门收集而来</li>
+<li>描述性统计: 计算能总计数据的统计量, 评测各种数据的可视化方法（表格图形法）</li>
+<li>探索性数据分析: 寻找模式、差异和其它能解决我们疑问的特征。同时检查不一致性，确认其局限性- 假设检验</li>
+<li>估计: 由数据进行推断</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h3 id="描述性统计"><a href="#描述性统计" class="headerlink" title="描述性统计"></a>描述性统计</h3><h4 id="集中趋势"><a href="#集中趋势" class="headerlink" title="集中趋势"></a>集中趋势</h4><blockquote>
+<p>中心测量值 –&gt; 数据集中趋势的度量</p>
+<ul>
+<li>众数: x轴上最高频率所对应的值（多众数无意义）</li>
+<li>中位数: 按顺序排列数据, 最中间的一位或者两位的平均数，包含异常值时，比均值更适合</li>
+<li>均值:算数平均数、调整平均数(去掉最大最小值)、加权平均数、几何平均数(几个数值[乘积]的[n次方根])</li>
+<li>分位数: 百分位数、四分位数(Q1、Q2、Q3, 即第25，50，75百分位数)</li>
+</ul>
+</blockquote>
+<h4 id="变异程度的度量"><a href="#变异程度的度量" class="headerlink" title="变异程度的度量"></a>变异程度的度量</h4><blockquote>
+<p>数据离散程度的度量</p>
+<ul>
+<li>极差: max-min</li>
+<li>四分位数间距(IQR): IQR = Q3 - Q1（中间50%数据的极差）</li>
+<li>方差: [离差]平方求和的均值 //TODO: 公式: 总体方差与样本方差</li>
+<li>标准偏差: 方差的正平方根（与原始数据的[单位度量]相同, 易于比较和解释）</li>
+</ul>
+</blockquote>
+<h4 id="分布形态的度量"><a href="#分布形态的度量" class="headerlink" title="分布形态的度量"></a>分布形态的度量</h4><blockquote>
+<p>偏度: 偏斜方向和程度(相对于正态分布)</p>
+<ul>
+<li>对称分布: 众数 = 中位数 = 均值</li>
+<li>正偏斜分布: 众数 &lt; 中位数 &lt; 均值</li>
+<li>负偏斜分布</li>
+</ul>
+</blockquote>
+<h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><blockquote>
+<p>数据归一化（标准化）是机器学习/数据挖掘的一项基础工作，是数据预处理的重要一步。样本各个特征往往具有不同的分布范围，通过归一化将各个维度的特征值映射到相同区间，使得各特征值具有相同量纲，处于同一数量级。</p>
+</blockquote>
+<h5 id="归一化的方法"><a href="#归一化的方法" class="headerlink" title="归一化的方法"></a>归一化的方法</h5><ol>
+<li><p><strong>min-miax归一化</strong></p>
+<p> 对各维特征值分别进行线性变换，使得各维特征值被映射到[0, 1]之间，转换函数如下：</p>
+ <center><img src="http://upload-images.jianshu.io/upload_images/5584618-56fbfd8270a2afd5.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据归一化"><br> min-max归一化转换函数</center>
+
+<p> 其中max为某一维特征值的最大值，min为某一维特征值的最小值。这种方法有个缺陷就是当有新样本加入时，可能导致max和min的变化，需要重新定义。</p>
+</li>
+<li><p><strong>z-score归一化</strong></p>
+<p> 这种方法用各维的均值和标准差来归一化各维特征值，它的转换函数为：</p>
+ <center><img src="http://upload-images.jianshu.io/upload_images/5584618-cb376c235f808bc7.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="机器学习之归一化"><br> z-score归一化转换函数</center>
+
+<p> 经过处理后，各维特征值符合标准正态分布。<br> 标准正态分布：曲线下方的面积是1;  众数=中位数=平均数, 关于均值左右对称<br> 其中，μ为所有样本数据的均值，σ为所有样本数据的标准差。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;统计方法&quot;&gt;&lt;a href=&quot;#统计方法&quot; class=&quot;headerlink&quot; title=&quot;统计方法&quot;&gt;&lt;/a&gt;统计方法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;许多场景下经常会根据所谓的&lt;em&gt;经验之谈&lt;/em&gt;来对某些事件总结观点获得结论。所谓的&lt;em&gt;经验之谈&lt;/em&gt;在非正式场合下，这类说辞没有太大的问题，然后大多数时候，我们需要有说服力的正经以及可靠的结论，经验之谈明显不能做到这一点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经验之谈的缺点(同事也是影响有效调查的因素)：&lt;ul&gt;
+&lt;li&gt;观察数量少&lt;/li&gt;
+&lt;li&gt;数据的选择性偏差&lt;/li&gt;
+&lt;li&gt;确认偏差(一部分提供支持示例，一部分引用反例）&lt;/li&gt;
+&lt;li&gt;数据的不准确&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统计方法的手段&lt;/strong&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;收集数据: 使用大型的调查数据，这些往往是为了得出某个结论进行可靠地统计推断专门收集而来&lt;/li&gt;
+&lt;li&gt;描述性统计: 计算能总计数据的统计量, 评测各种数据的可视化方法（表格图形法）&lt;/li&gt;
+&lt;li&gt;探索性数据分析: 寻找模式、差异和其它能解决我们疑问的特征。同时检查不一致性，确认其局限性- 假设检验&lt;/li&gt;
+&lt;li&gt;估计: 由数据进行推断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="数据分析" scheme="http://yoursite.com/categories/dataAnalysis/"/>
+    
+    
+      <category term="数据分析" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python代码优化</title>
     <link href="http://yoursite.com/2017/08/07/python%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/"/>
     <id>http://yoursite.com/2017/08/07/python代码优化/</id>
