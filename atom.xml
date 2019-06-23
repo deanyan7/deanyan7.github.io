@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-12T07:23:08.000Z</updated>
+  <updated>2019-06-23T06:30:15.789Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deep Learning</title>
+    <link href="http://yoursite.com/2019/06/23/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Deep-learning/"/>
+    <id>http://yoursite.com/2019/06/23/深度学习/Deep-learning/</id>
+    <published>2019-06-23T06:06:13.000Z</published>
+    <updated>2019-06-23T06:30:15.789Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="综述-introduce"><a href="#综述-introduce" class="headerlink" title="综述(introduce)"></a>综述(introduce)</h2><h2 id="监督学习-Supervised-learning"><a href="#监督学习-Supervised-learning" class="headerlink" title="监督学习(Supervised learning)"></a>监督学习(Supervised learning)</h2><h2 id="非监督学习-Unsupervised-learning"><a href="#非监督学习-Unsupervised-learning" class="headerlink" title="非监督学习(Unsupervised learning)"></a>非监督学习(Unsupervised learning)</h2><h2 id="强化学习-reinforcedment-Learning"><a href="#强化学习-reinforcedment-Learning" class="headerlink" title="强化学习(reinforcedment Learning)"></a>强化学习(reinforcedment Learning)</h2><h2 id="反向传播算法-Backpropagation"><a href="#反向传播算法-Backpropagation" class="headerlink" title="反向传播算法(Backpropagation)"></a>反向传播算法(Backpropagation)</h2><h2 id="卷积神经网络-CNN-convolutional-neural-networks"><a href="#卷积神经网络-CNN-convolutional-neural-networks" class="headerlink" title="卷积神经网络(CNN convolutional neural networks)"></a>卷积神经网络(CNN convolutional neural networks)</h2><h2 id="图像理解-Image-understanding"><a href="#图像理解-Image-understanding" class="headerlink" title="图像理解(Image understanding)"></a>图像理解(Image understanding)</h2><h2 id="分布式表示和语言模型-Distributed-representations-and-Language-processing"><a href="#分布式表示和语言模型-Distributed-representations-and-Language-processing" class="headerlink" title="分布式表示和语言模型(Distributed representations and Language processing)"></a>分布式表示和语言模型(Distributed representations and Language processing)</h2><h2 id="视觉与语言-vision-and-language"><a href="#视觉与语言-vision-and-language" class="headerlink" title="视觉与语言(vision and language)"></a>视觉与语言(vision and language)</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;综述-introduce&quot;&gt;&lt;a href=&quot;#综述-introduce&quot; class=&quot;headerlink&quot; title=&quot;综述(introduce)&quot;&gt;&lt;/a&gt;综述(introduce)&lt;/h2&gt;&lt;h2 id=&quot;监督学习-Supervised-learnin
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Deep Learning" scheme="http://yoursite.com/tags/Deep-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>特征工程</title>
