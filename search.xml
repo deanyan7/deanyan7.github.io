@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[特征工程]]></title>
+      <url>/2018/03/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[pandas缺失数据处理]]></title>
       <url>/2017/08/21/pandas%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 定义数据</span></div><div class="line">dates = pd.date_range(<span class="string">'20170101'</span>, periods = <span class="number">6</span>)</div><div class="line">df = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>, <span class="number">4</span>)), index = dates, columns = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>])</div><div class="line"><span class="comment"># 假设缺少数据</span></div><div class="line">df.iloc[<span class="number">1</span>, <span class="number">1</span>] = np.nan</div><div class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = np.nan</div><div class="line">df.iloc[<span class="number">1</span>, <span class="number">3</span>] = np.nan</div><div class="line">df.iloc[<span class="number">4</span>] = np.nan</div><div class="line"><span class="keyword">print</span> df</div></pre></td></tr></table></figure>
